@@ -40,8 +40,11 @@ public class SendMailParam {
     /**
      * mine的标头
      */
-    private final Map<String, String> heads = new ConcurrentHashMap<>();
+    private  Map<String, String> heads = new ConcurrentHashMap<>();
 
+    public void setHeads(Map<String, String> heads) {
+        this.heads = heads;
+    }
 
     public Map<String, String> getHeads() {
         return heads;

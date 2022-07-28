@@ -295,6 +295,7 @@ public class JavaMailServiceImpl implements JavaMailService {
         for (String to : split) {
             SendMailParam oneParam = new SendMailParam();
             BeanUtils.copyProperties(sendMailParam, oneParam);
+            oneParam.setHeads(sendMailParam.getHeads());
             oneParam.setToUser(to);
             Future<SendMailResponse> future = taskExecutor.submit(() -> {
                 SendMailResponse sendMailResponse = new SendMailResponse();
