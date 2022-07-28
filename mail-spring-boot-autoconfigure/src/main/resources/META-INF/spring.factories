@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.framework.mail.spring.boot.autoconfigure.service.impl.JavaMailServiceImpl,\
+  com.framework.mail.spring.boot.autoconfigure.MailAutoConfiguration
