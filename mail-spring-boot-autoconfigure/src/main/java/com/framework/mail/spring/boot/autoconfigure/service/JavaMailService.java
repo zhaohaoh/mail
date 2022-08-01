@@ -13,9 +13,9 @@ import java.util.List;
 
 public interface JavaMailService {
     //发送邮件
-    SendMailResponse sendMail(SendMailParam sendMailDTO);
+    SendMailResponse sendMail(SendMailParam sendMailParam);
 
-    List<SendMailResponse> sendBatchMail(SendMailParam sendMailParam);
+    List<SendMailResponse> sendBatchMail(List<SendMailParam> sendMailParams);
 
     MimeMessage createMessage(SendMailParam sendMailDTO, JavaMailSender sender) throws MessagingException;
 

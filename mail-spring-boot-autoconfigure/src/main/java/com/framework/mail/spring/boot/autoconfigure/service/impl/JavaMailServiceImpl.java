@@ -281,27 +281,22 @@ public class JavaMailServiceImpl implements JavaMailService {
 
 
     @Override
-    public List<SendMailResponse> sendBatchMail(SendMailParam sendMailParam) {
+    public List<SendMailResponse> sendBatchMail(List<SendMailParam> sendMailParams) {
         boolean can = verifySend();
         if (!can) {
             throw new QueueFullException("sendBatch queue is Full");
         }
         List<SendMailResponse> results = new ArrayList<>();
         List<Future<SendMailResponse>> futures = new ArrayList<>();
-        String[] split = sendMailParam.getToUser().split(",");
-        if (split.length > 1000) {
+        if (sendMailParams.size() > 1000) {
             throw new SendMailException("sendBatch toUser limit 1000");
         }
-        for (String to : split) {
-            SendMailParam oneParam = new SendMailParam();
-            BeanUtils.copyProperties(sendMailParam, oneParam);
-            oneParam.setHeads(sendMailParam.getHeads());
-            oneParam.setToUser(to);
+        for (SendMailParam sendMailParam : sendMailParams) {
             Future<SendMailResponse> future = taskExecutor.submit(() -> {
                 SendMailResponse sendMailResponse = new SendMailResponse();
-                sendMailResponse.setTo(to);
+                sendMailResponse.setTo(sendMailParam.getToUser());
                 try {
-                    sendMail(oneParam);
+                    sendMail(sendMailParam);
                 } catch (Exception e) {
                     sendMailResponse.setError(e.getMessage());
                     return sendMailResponse;
