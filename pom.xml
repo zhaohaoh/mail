@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <groupId>io.github.zhaohaoh</groupId>
     <artifactId>mail</artifactId>
     <packaging>pom</packaging>
@@ -18,7 +18,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <mail.version>1.0.0</mail.version>
+        <mail.version>1.0.2</mail.version>
         <spring-boot.version>2.6.3</spring-boot.version>
         <!-- 打包跳过单元测试 -->
         <skipTests>true</skipTests>
