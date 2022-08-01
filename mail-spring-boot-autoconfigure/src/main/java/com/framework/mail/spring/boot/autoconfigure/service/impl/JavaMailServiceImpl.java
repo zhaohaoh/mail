@@ -124,13 +124,14 @@ public class JavaMailServiceImpl implements JavaMailService {
         JavaMailParamer javaMailParamer = getSendJavaMailParamer(sendMailParam.getMailBoxParam());
         JavaMailSender sender = JavaMailProvider.getSender(javaMailParamer);
         SendMailResponse sendMailResponse = new SendMailResponse();
+        sendMailResponse.setSuccess(true);
+        sendMailResponse.setTo(sendMailParam.getToUser());
         try {
             MimeMessage message = createMessage(sendMailParam, sender);
             send(message, sender);
         } catch (Exception e) {
             log.error("send mail failed ", e);
             sendMailResponse.setError(e.getMessage());
-            sendMailResponse.setTo(sendMailParam.getToUser());
         }
         return sendMailResponse;
     }
