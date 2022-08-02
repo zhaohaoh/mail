@@ -53,9 +53,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class JavaMailServiceImpl implements JavaMailService {
     protected static final Logger log = LoggerFactory.getLogger(JavaMailServiceImpl.class);
 
-    private final ThreadPoolExecutor taskExecutor = new ThreadPoolExecutor(50, 500,
+    private final ThreadPoolExecutor taskExecutor = new ThreadPoolExecutor(50, 200,
             30L, TimeUnit.SECONDS,
-            new LinkedBlockingDeque<>(10240), new ThreadFactory() {
+            new LinkedBlockingDeque<>(2048), new ThreadFactory() {
         private final ThreadGroup group;
         private final AtomicInteger threadNumber = new AtomicInteger(1);
         private static final String NAME_PREFIX = "mail-thread-";
@@ -280,9 +280,9 @@ public class JavaMailServiceImpl implements JavaMailService {
         return file.getFilename();
     }
 
-
+    // 阿里云批量发送一次最多支持 100封每秒. 海外邮件服务器最多支持1000一次批量发送.所以这里加锁限制只能一次一次批量发
     @Override
-    public List<SendMailResponse> sendBatchMail(List<SendMailParam> sendMailParams) {
+    public synchronized List<SendMailResponse> sendBatchMail(List<SendMailParam> sendMailParams) {
         boolean can = verifySend();
         if (!can) {
             throw new QueueFullException("sendBatch queue is Full");
@@ -320,9 +320,11 @@ public class JavaMailServiceImpl implements JavaMailService {
         return results;
     }
 
+    // 加了锁原则上是不会出现.随便校验一下
+    @Deprecated
     private synchronized boolean verifySend() {
         BlockingQueue<Runnable> queue = taskExecutor.getQueue();
-        if (queue.size() > 9024) {
+        if (queue.size() > 1024) {
             return false;
         }
         return true;
