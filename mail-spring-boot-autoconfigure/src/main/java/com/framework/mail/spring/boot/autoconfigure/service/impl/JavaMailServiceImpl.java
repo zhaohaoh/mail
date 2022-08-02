@@ -281,6 +281,7 @@ public class JavaMailServiceImpl implements JavaMailService {
     }
 
     // 阿里云批量发送一次最多支持 100封每秒. 海外邮件服务器最多支持1000一次批量发送.所以这里加锁限制只能一次一次批量发
+    // 多台服务器暂时不考虑
     @Override
     public synchronized List<SendMailResponse> sendBatchMail(List<SendMailParam> sendMailParams) {
         boolean can = verifySend();
