@@ -321,7 +321,7 @@ public class JavaMailServiceImpl implements JavaMailService {
         return results;
     }
 
-    // 加了锁原则上是不会出现.随便校验一下
+    // 加了锁原则上是不会出现.预留代码校验一下
     @Deprecated
     private synchronized boolean verifySend() {
         BlockingQueue<Runnable> queue = taskExecutor.getQueue();
