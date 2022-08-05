@@ -12,7 +12,6 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <mail.version>1.0.0</mail.version>
         <spring-boot.version>2.6.3</spring-boot.version>
         <commons-lang3.version>3.9</commons-lang3.version>
         <freemarker.version>2.3.29</freemarker.version>
