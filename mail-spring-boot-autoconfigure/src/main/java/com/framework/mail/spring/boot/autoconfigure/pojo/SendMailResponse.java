@@ -3,7 +3,8 @@ package com.framework.mail.spring.boot.autoconfigure.pojo;
 import java.util.Objects;
 
 public class SendMailResponse {
-
+    //接收人
+    private String requestId;
     //接收人
     private String to;
 
@@ -33,6 +34,14 @@ public class SendMailResponse {
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
     @Override

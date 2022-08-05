@@ -10,6 +10,8 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SendMailParam {
+    //接收人
+    private String requestId;
     //发送方邮箱
     private String from;
     @NotNull(message = "接收方邮箱集合不可为空")
@@ -41,6 +43,14 @@ public class SendMailParam {
      * mine的标头
      */
     private  Map<String, String> heads = new ConcurrentHashMap<>();
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
 
     public void setHeads(Map<String, String> heads) {
         this.heads = heads;

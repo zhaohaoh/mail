@@ -297,6 +297,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             Future<SendMailResponse> future = taskExecutor.submit(() -> {
                 SendMailResponse sendMailResponse = new SendMailResponse();
                 sendMailResponse.setTo(sendMailParam.getToUser());
+                sendMailResponse.setRequestId(sendMailParam.getRequestId());
                 try {
                     sendMail(sendMailParam);
                 } catch (Exception e) {
