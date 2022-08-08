@@ -300,7 +300,10 @@ public class JavaMailServiceImpl implements JavaMailService {
                 sendMailResponse.setTo(sendMailParam.getToUser());
                 sendMailResponse.setRequestId(sendMailParam.getRequestId());
                 try {
-                    sendMail(sendMailParam);
+                    SendMailResponse mailResponse = sendMail(sendMailParam);
+                    if (mailResponse != null) {
+                        return mailResponse;
+                    }
                 } catch (Exception e) {
                     sendMailResponse.setSuccess(false);
                     sendMailResponse.setError(e.getMessage());
