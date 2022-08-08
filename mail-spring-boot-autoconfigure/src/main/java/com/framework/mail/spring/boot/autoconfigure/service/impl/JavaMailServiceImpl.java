@@ -53,7 +53,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class JavaMailServiceImpl implements JavaMailService {
     protected static final Logger log = LoggerFactory.getLogger(JavaMailServiceImpl.class);
 
-    private final ThreadPoolExecutor taskExecutor = new ThreadPoolExecutor(10, 50,
+    private final ThreadPoolExecutor taskExecutor = new ThreadPoolExecutor(8, 50,
             30L, TimeUnit.SECONDS,
             new LinkedBlockingDeque<>(2048), new ThreadFactory() {
         private final ThreadGroup group;
