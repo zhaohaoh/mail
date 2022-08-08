@@ -130,6 +130,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             MimeMessage message = createMessage(sendMailParam, sender);
             send(message, sender);
         } catch (Exception e) {
+            sendMailResponse.setSuccess(false);
             log.error("send mail failed ", e);
             sendMailResponse.setError(e.getMessage());
         }
