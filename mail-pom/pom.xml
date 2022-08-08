@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <artifactId>mail-pom</artifactId>
     <groupId>io.github.zhaohaoh</groupId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
