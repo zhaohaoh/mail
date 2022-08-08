@@ -302,6 +302,7 @@ public class JavaMailServiceImpl implements JavaMailService {
                 try {
                     sendMail(sendMailParam);
                 } catch (Exception e) {
+                    sendMailResponse.setSuccess(false);
                     sendMailResponse.setError(e.getMessage());
                     return sendMailResponse;
                 }
