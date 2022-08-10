@@ -5,12 +5,12 @@
     <parent>
         <groupId>io.github.zhaohaoh</groupId>
         <artifactId>mail</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.52</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mail-core</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.52</version>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
